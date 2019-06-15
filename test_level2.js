@@ -4,7 +4,7 @@
  *
  * The goal with this exercise is to transform data in an Array of objects
  *
- * This is TEST LEVEL 1 
+ * This is TEST LEVEL 2
  */
 
 
