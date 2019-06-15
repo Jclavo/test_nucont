@@ -207,16 +207,6 @@ class TransformData {
  * This are some test
  */
 
-function getValueFromTextArea()
-{
-    var lines = document.getElementById("input_area").value
-    
-    var transform = new TransformData()
-    console.log(transform.execute(lines))
-    
-}
-
-
 console.log('Test # 1 - Formal test')
 var lines = null
 
