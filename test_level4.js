@@ -121,6 +121,11 @@ class TransformData {
 	                break;
 
 	            case 2:
+	            	if(valueLine.match(/^\d+$/) && outputData.getDescription() == null) //if there is the column acceso
+	            	{
+	            		outputData.setClassifier(these.removeDots(valueLine))
+		                break;
+	            	}
 	                if (valueLine.match(/^[a-zA-Z]/) || valueLine.match(/^[0-9]+\-/)) //validate start at number and then -
 	                {
 	                	outputData.setDescription(these.concatenateWithSpace(outputData.getDescription(),valueLine))
@@ -205,17 +210,7 @@ class TransformData {
 /**
  * 
  * This are some test
-
-
-function getValueFromTextArea()
-{
-    var lines = document.getElementById("input_area").value
-    
-    var transform = new TransformData()
-    console.log(transform.execute(lines))
-    
-}
-
+ */
 
 console.log('Test # 1 - Formal test')
 var lines = null
@@ -229,6 +224,7 @@ lines = '100000  ATIVO             1000  300   500   1200\n' +
 	
 var test_1 = new TransformData()
 console.log(test_1.execute(lines))
+
 
 
 console.log('Test # 2, Input = null')
@@ -316,7 +312,7 @@ lines = 'Balancete Contábil									Pág.: 1 de 3	\n' +
 
 var test_8 = new TransformData()
 console.log(test_8.execute(lines))
- */
+
 
 console.log('Test # 9 - Formal test -LEVEL 4')
 
@@ -325,7 +321,19 @@ lines = 'Balancete Analitico (Valores em Reais)     \n' +
 		'TESLA, INC.                       (0619) \n' +
 		'CNPJ/CPF: 99.999.999/9999-9								 \n' +
 		'-------------------------------------------------------------------- \n' +
-		'10000  1000000000      A T I V O                                        5.869.359,63   13.988.798,89  14.478.791,43   5.379.367,09 \n' 
+		'10000  1000000000      A T I V O                                        5.869.359,63   13.988.798,89  14.478.791,43   5.379.367,09 \n' +
+		'																											\n' +
+		'11100  1101000000        CAIXA E EQUIVALENTES DE CAIXA                    254.315,84    1.502.516,19   1.449.152,65 \n' +
+		'11702  1110010100          EMPREGADOS                                           0,00       17.609,68      17.283,75        \n'  +
+		'Balancete Analitico (Valores em Reais)     \n' +
+		'----------------------------------------------------------------------- \n' +
+		'TESLA, INC.                       (0619) \n' +
+		'CNPJ/CPF: 99.999.999/9999-9								 \n' +
+		'-------------------------------------------------------------------- \n' +
+		'12100  1202000000        CONTAS E TITULOS A RECEBER                        11.000,00            0,00           0,00 \n' +
+		'13460  1202010000         TITULOS CAPITALIZACAO                            11.000,00            0,00           0,00 \n' +
+		'																															\n' +
+		'13200  1205000000        IMOBILIZADO                                    1.999.948,97            0,00           0,00   1.999.9 \n' 
 			
 
 var test_9 = new TransformData()
